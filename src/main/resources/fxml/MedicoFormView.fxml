@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Cadastro de médico (tema v2): novo ou edição. Erros aparecem no próprio campo.
+    Camada de View desacoplada da lógica; toda interação vai para o MedicoFormController.
+-->
+<StackPane fx:id="rootStack" styleClass="v2-root" prefHeight="800.0" prefWidth="1366.0" minHeight="700.0" minWidth="1100.0"
+           stylesheets="@../css/tema-v2.css"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.farmacia.controller.MedicoFormController">
+
+    <BorderPane fx:id="rootPane">
+        <left>
+            <fx:include fx:id="menuLateral" source="componentes/MenuLateral.fxml"/>
+        </left>
+
+        <center>
+            <VBox>
+                <VBox spacing="4.0">
+                    <padding>
+                        <Insets top="28.0" right="40.0" bottom="16.0" left="40.0"/>
+                    </padding>
+                    <HBox spacing="6.0" alignment="CENTER_LEFT" styleClass="v2-trilha">
+                        <Label text="Início" styleClass="v2-trilha"/>
+                        <Label text="/" styleClass="v2-trilha"/>
+                        <Label fx:id="lnkLista" text="Médicos" styleClass="v2-trilha-link"/>
+                        <Label text="/" styleClass="v2-trilha"/>
+                        <Label fx:id="lblTrilhaAtual" text="Novo médico" styleClass="v2-trilha"/>
+                    </HBox>
+                    <Label fx:id="lblTituloPagina" text="Novo médico" styleClass="v2-titulo"/>
+                    <Label fx:id="lblSubtituloPagina" styleClass="v2-subtitulo"/>
+                </VBox>
+
+                <ScrollPane fitToWidth="true" styleClass="v2-scroll" VBox.vgrow="ALWAYS">
+                    <content>
+                        <VBox spacing="20.0">
+                            <padding>
+                                <Insets top="4.0" right="40.0" bottom="24.0" left="40.0"/>
+                            </padding>
+                            <HBox spacing="6.0" alignment="CENTER_LEFT">
+                                <Label text="*" styleClass="v2-obrigatorio"/>
+                                <Label text="Campos obrigatórios" styleClass="v2-secao-dica"/>
+                            </HBox>
+
+                            <HBox fx:id="avisoReceitas" alignment="CENTER_LEFT" spacing="12.0" styleClass="v2-dica" visible="false" managed="false">
+                                <StackPane fx:id="avisoReceitasIcone"/>
+                                <Label fx:id="lblAvisoReceitas" wrapText="true" HBox.hgrow="ALWAYS"/>
+                            </HBox>
+
+                            <VBox styleClass="v2-form-cartao" spacing="16.0">
+                                <Label text="Dados do médico" styleClass="v2-secao-titulo"/>
+                                <GridPane hgap="16.0" vgap="16.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                    </columnConstraints>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Código" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtCodigo" promptText="Automático" styleClass="v2-input, v2-input-leitura" editable="false"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Nome" styleClass="v2-label"/>
+                                            <Label text="*" styleClass="v2-obrigatorio"/>
+                                        </HBox>
+                                        <TextField fx:id="txtNome" promptText="Nome completo, como no receituário (ex.: Dra. Ana Souza)" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="CRM" styleClass="v2-label"/>
+                                            <Label text="*" styleClass="v2-obrigatorio"/>
+                                        </HBox>
+                                        <TextField fx:id="txtCrm" promptText="CRM 000000-UF" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Telefone" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtTelefone" promptText="(00) 00000-0000" styleClass="v2-input"/>
+                                    </VBox>
+                                </GridPane>
+                            </VBox>
+
+                            <VBox styleClass="v2-form-cartao" spacing="16.0">
+                                <Label text="Endereço" styleClass="v2-secao-titulo"/>
+                                <Label text="Opcional. Use para guardar o endereço do consultório." styleClass="v2-secao-dica" wrapText="true"/>
+                                <GridPane hgap="16.0" vgap="16.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                        <ColumnConstraints percentWidth="25.0"/>
+                                    </columnConstraints>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="CEP" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtCep" promptText="00000-000" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="3">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Rua" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtRua" promptText="Nome da rua ou avenida" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Número" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtNumero" promptText="Nº" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Complemento" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtComplemento" promptText="Sala, conjunto, referência" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="1" GridPane.columnIndex="3" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Bairro" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtBairro" promptText="Bairro" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="3">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Cidade" styleClass="v2-label"/>
+                                        </HBox>
+                                        <TextField fx:id="txtCidade" promptText="Cidade" styleClass="v2-input"/>
+                                    </VBox>
+                                    <VBox styleClass="v2-campo" spacing="6.0" GridPane.rowIndex="2" GridPane.columnIndex="3" GridPane.columnSpan="1">
+                                        <HBox spacing="4.0" alignment="CENTER_LEFT">
+                                            <Label text="Estado" styleClass="v2-label"/>
+                                        </HBox>
+                                        <ComboBox fx:id="cbEstado" maxWidth="Infinity" promptText="UF" styleClass="v2-input">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="AC"/>
+                                                    <String fx:value="AL"/>
+                                                    <String fx:value="AP"/>
+                                                    <String fx:value="AM"/>
+                                                    <String fx:value="BA"/>
+                                                    <String fx:value="CE"/>
+                                                    <String fx:value="DF"/>
+                                                    <String fx:value="ES"/>
+                                                    <String fx:value="GO"/>
+                                                    <String fx:value="MA"/>
+                                                    <String fx:value="MT"/>
+                                                    <String fx:value="MS"/>
+                                                    <String fx:value="MG"/>
+                                                    <String fx:value="PA"/>
+                                                    <String fx:value="PB"/>
+                                                    <String fx:value="PR"/>
+                                                    <String fx:value="PE"/>
+                                                    <String fx:value="PI"/>
+                                                    <String fx:value="RJ"/>
+                                                    <String fx:value="RN"/>
+                                                    <String fx:value="RS"/>
+                                                    <String fx:value="RO"/>
+                                                    <String fx:value="RR"/>
+                                                    <String fx:value="SC"/>
+                                                    <String fx:value="SP"/>
+                                                    <String fx:value="SE"/>
+                                                    <String fx:value="TO"/>
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                    </VBox>
+                                </GridPane>
+                            </VBox>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+
+                <HBox styleClass="v2-barra-acoes">
+                    <Button fx:id="btnCancelar" onAction="#handleCancelar" styleClass="v2-btn, v2-btn-ghost"/>
+                    <Button fx:id="btnSalvarMedico" onAction="#handleSalvarMedico" styleClass="v2-btn, v2-btn-primary"/>
+                </HBox>
+            </VBox>
+        </center>
+    </BorderPane>
+</StackPane>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Conteúdo do diálogo "Duplicar receita": o usuário marca quais medicamentos farão parte da nova receita.
+    Toda a lógica fica em DuplicarReceitaController.
+-->
+<VBox spacing="10.0" prefWidth="544.0"
+      stylesheets="@../css/tema-v2.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.farmacia.controller.DuplicarReceitaController">
+    <padding>
+        <Insets top="0.0" right="0.0" bottom="0.0" left="0.0"/>
+    </padding>
+
+    <Label fx:id="lblTitulo" text="Duplicar receita" styleClass="v2-caixa-subtitulo" wrapText="true"/>
+    <Label text="Marque os medicamentos que farão parte da nova receita. O paciente e o médico são mantidos; as datas de fabricação e validade ficam em branco para você preencher."
+           styleClass="v2-caixa-texto" wrapText="true"/>
+
+    <CheckBox fx:id="chkTodos" text="Selecionar todos os itens" selected="true" onAction="#handleSelecionarTodos"/>
+    <ListView fx:id="listItens" prefHeight="200.0"/>
+    <Label fx:id="lblContagem" text="" styleClass="v2-caixa-texto"/>
+</VBox>

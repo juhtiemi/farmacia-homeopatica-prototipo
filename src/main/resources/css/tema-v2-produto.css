@@ -1,0 +1,22 @@
+/* Estilos extras da tela de Produtos (tema v2). Vem depois do tema-v2.css. */
+
+/* "Sem estoque": vermelho discreto, na mesma família do selo âmbar de "Estoque baixo". */
+.v2-root .v2-selo-sem-estoque {
+    -fx-background-color: #FDECEA;
+    -fx-text-fill: #B42318;
+}
+
+/* Colunas numéricas (preço): cabeçalho alinhado à direita, como o valor. */
+.v2-tabela .column-header.v2-col-direita .label {
+    -fx-alignment: CENTER_RIGHT;
+    -fx-padding: 0 14 0 0;
+}
+
+/* Quantidade em estoque: número em caixa de largura fixa, para o selo ao lado ficar alinhado entre as linhas. */
+.v2-root .v2-estoque-numero {
+    -fx-font-weight: 500;
+}
+
+.v2-root .v2-preco {
+    -fx-font-weight: 500;
+}

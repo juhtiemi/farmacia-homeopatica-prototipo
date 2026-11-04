@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+    Menu lateral compartilhado pelas telas do tema v2. Toda a navegação fica em MenuLateralController;
+    a tela que o inclui só informa qual item está ativo.
+-->
+<VBox fx:id="menu" styleClass="v2-side" prefWidth="248.0" minWidth="248.0" maxWidth="248.0" spacing="28.0"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.farmacia.controller.MenuLateralController">
+    <padding>
+        <Insets top="28.0" right="16.0" bottom="20.0" left="16.0"/>
+    </padding>
+
+    <HBox spacing="12.0" alignment="CENTER_LEFT">
+        <padding>
+            <Insets left="8.0" right="8.0"/>
+        </padding>
+        <StackPane fx:id="logo" styleClass="v2-side-logo"/>
+        <VBox spacing="1.0">
+            <Label text="Farmácia Homeopática" styleClass="v2-side-marca" wrapText="true"/>
+            <Label text="Manipulação" styleClass="v2-side-sub"/>
+        </VBox>
+    </HBox>
+
+    <VBox spacing="4.0">
+        <Button fx:id="btnNavClientes" text="Clientes" onAction="#handleNavClientes" styleClass="v2-nav" maxWidth="Infinity"/>
+        <Button fx:id="btnNavReceitas" text="Receitas" onAction="#handleNavReceitas" styleClass="v2-nav" maxWidth="Infinity"/>
+        <Button fx:id="btnNavMedicos" text="Médicos" onAction="#handleNavMedicos" styleClass="v2-nav" maxWidth="Infinity"/>
+        <Button fx:id="btnNavProdutos" text="Produtos" onAction="#handleNavProdutos" styleClass="v2-nav" maxWidth="Infinity"/>
+        <Button fx:id="btnNavFuncionarios" text="Funcionários" onAction="#handleNavFuncionarios" styleClass="v2-nav" maxWidth="Infinity"/>
+        <StackPane>
+            <Button fx:id="btnNavLixeira" text="Lixeira" onAction="#handleNavLixeira" styleClass="v2-nav" maxWidth="Infinity"/>
+            <Label fx:id="lblContadorLixeira" styleClass="v2-nav-contador" mouseTransparent="true"
+                   StackPane.alignment="CENTER_RIGHT">
+                <StackPane.margin>
+                    <Insets right="12.0"/>
+                </StackPane.margin>
+            </Label>
+        </StackPane>
+    </VBox>
+
+    <Region VBox.vgrow="ALWAYS"/>
+
+    <HBox spacing="12.0" alignment="CENTER_LEFT" styleClass="v2-side-rodape">
+        <padding>
+            <Insets top="16.0" left="8.0" right="8.0"/>
+        </padding>
+        <Label text="AB" styleClass="v2-avatar" alignment="CENTER"/>
+        <VBox spacing="1.0" HBox.hgrow="ALWAYS">
+            <Label text="Atendente de Balcão" wrapText="true" style="-fx-font-size: 14px; -fx-font-weight: 600;"/>
+            <Label text="Operador conectado" wrapText="true" styleClass="v2-side-op-sub"/>
+        </VBox>
+        <Button fx:id="btnTrocarOperador" styleClass="v2-ib, v2-ib-escuro"/>
+    </HBox>
+</VBox>

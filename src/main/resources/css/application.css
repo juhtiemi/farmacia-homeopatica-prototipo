@@ -1,0 +1,347 @@
+/*
+ * Folha de estilos global da aplicação (camada de View).
+ * Nenhuma regra aqui depende de lógica do Controller — apenas styleClass/fx:id são usados como contrato.
+ */
+
+.root {
+    -primary-color: #2f7d6b;
+    -primary-dark: #235c4f;
+    -primary-light: #e6f2ef;
+    -danger-color: #d64545;
+    -success-color: #2e8b57;
+    -text-main: #26312e;
+    -text-muted: #6b7a76;
+    -border-color: #dde5e2;
+    -bg-app: #f6f8f7;
+
+    -fx-font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: -bg-app;
+}
+
+/* ===================== NAVEGAÇÃO ===================== */
+
+.nav-sidebar {
+    -fx-background-color: -primary-dark;
+}
+
+.nav-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.nav-subtitle {
+    -fx-text-fill: #a9c9c1;
+    -fx-font-size: 11px;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #d7e8e3;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 12 10 12;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: derive(-primary-dark, 25%);
+    -fx-text-fill: white;
+}
+
+.nav-button-active {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.nav-footer-label {
+    -fx-text-fill: #9db3ad;
+    -fx-font-size: 11px;
+}
+
+/* ===================== CABEÇALHO DA PÁGINA ===================== */
+
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-main;
+}
+
+.page-subtitle {
+    -fx-font-size: 12.5px;
+    -fx-text-fill: -text-muted;
+}
+
+/* ===================== BARRA DE FEEDBACK (visibilidade do estado do sistema) ===================== */
+
+.feedback-banner {
+    -fx-background-color: transparent;
+    -fx-background-radius: 6;
+    -fx-border-color: transparent;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+}
+
+.feedback-banner.feedback-success {
+    -fx-background-color: #e6f4ea;
+    -fx-border-color: -success-color;
+}
+
+.feedback-banner.feedback-success .feedback-text {
+    -fx-text-fill: -success-color;
+    -fx-font-weight: bold;
+}
+
+.feedback-banner.feedback-error {
+    -fx-background-color: #fbe9e9;
+    -fx-border-color: -danger-color;
+}
+
+.feedback-banner.feedback-error .feedback-text {
+    -fx-text-fill: -danger-color;
+    -fx-font-weight: bold;
+}
+
+.feedback-banner.feedback-info {
+    -fx-background-color: #eaf1fb;
+    -fx-border-color: #3a6fb0;
+}
+
+.feedback-banner.feedback-info .feedback-text {
+    -fx-text-fill: #2a5488;
+    -fx-font-weight: bold;
+}
+
+.feedback-text {
+    -fx-font-size: 12.5px;
+}
+
+.feedback-icon {
+    -fx-font-weight: bold;
+}
+
+/* ===================== CARTÕES / SEÇÕES (agrupamento visual = menor carga cognitiva) ===================== */
+
+.form-section {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 16;
+}
+
+.form-section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-main;
+}
+
+.form-section-hint {
+    -fx-font-size: 11.5px;
+    -fx-text-fill: -text-muted;
+}
+
+.section-form-scroll {
+    -fx-background-color: transparent;
+    -fx-background: -bg-app;
+}
+
+.section-form-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.form-actions {
+    -fx-border-color: -border-color transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ===================== INDICADOR DE CAMPO OBRIGATÓRIO ===================== */
+
+.required-indicator {
+    -fx-text-fill: -danger-color;
+    -fx-font-weight: bold;
+}
+
+/* ===================== CAMPO COM ERRO DE VALIDAÇÃO ===================== */
+
+.field-invalid {
+    -fx-border-color: -danger-color;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+}
+
+/* ===================== CAMPOS SOMENTE LEITURA (gerados automaticamente) ===================== */
+
+.field-readonly {
+    -fx-background-color: #eef1f0;
+    -fx-text-fill: -text-muted;
+}
+
+/* ===================== BOTÕES ===================== */
+
+.btn-primary {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 18 8 18;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: -primary-dark;
+}
+
+.btn-secondary {
+    -fx-background-color: -primary-light;
+    -fx-text-fill: -primary-dark;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+    -fx-border-color: -primary-color;
+    -fx-border-radius: 6;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: derive(-primary-light, -10%);
+}
+
+.btn-tertiary {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-muted;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+}
+
+.btn-tertiary:hover {
+    -fx-text-fill: -text-main;
+    -fx-underline: true;
+}
+
+/* ===================== AUTOCOMPLETE (reconhecimento em vez de memorização) ===================== */
+
+.autocomplete-list {
+    -fx-background-color: white;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+}
+
+.autocomplete-list .list-cell:hover,
+.autocomplete-list .list-cell:filled:hover {
+    -fx-background-color: -primary-light;
+    -fx-text-fill: -primary-dark;
+}
+
+/* ===================== TABELAS ===================== */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: -border-color;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: -primary-light;
+}
+
+.table-view .column-header-background .label {
+    -fx-text-fill: -primary-dark;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -primary-light;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: -primary-dark;
+}
+
+/* Seletor segmentado (filtro Todos / Titulares / Dependentes) */
+.segmented-button {
+    -fx-background-color: white;
+    -fx-text-fill: -text-muted;
+    -fx-border-color: -border-color;
+    -fx-border-width: 1 0 1 1;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+}
+
+.segmented-first {
+    -fx-background-radius: 6 0 0 6;
+    -fx-border-radius: 6 0 0 6;
+}
+
+.segmented-last {
+    -fx-border-width: 1 1 1 1;
+    -fx-background-radius: 0 6 6 0;
+    -fx-border-radius: 0 6 6 0;
+}
+
+.segmented-button:selected {
+    -fx-background-color: -primary-light;
+    -fx-text-fill: -primary-dark;
+    -fx-font-weight: bold;
+}
+
+/* Botões de ação com ícone (editar, excluir, duplicar, adicionar dependente) */
+.btn-icon {
+    -fx-background-color: transparent;
+    -fx-background-radius: 6;
+    -fx-padding: 6;
+    -fx-cursor: hand;
+}
+
+.btn-icon .icon {
+    -fx-background-color: -text-muted;
+    -fx-min-width: 18;
+    -fx-min-height: 18;
+    -fx-pref-width: 18;
+    -fx-pref-height: 18;
+    -fx-max-width: 18;
+    -fx-max-height: 18;
+    -fx-scale-shape: true;
+}
+
+.btn-icon:hover {
+    -fx-background-color: -primary-light;
+}
+
+.btn-icon:hover .icon {
+    -fx-background-color: -primary-dark;
+}
+
+.btn-icon-danger:hover {
+    -fx-background-color: #fbeaea;
+}
+
+.btn-icon-danger:hover .icon {
+    -fx-background-color: #b3261e;
+}
+
+.btn-icon:focused {
+    -fx-background-color: -primary-light;
+}
+
+.icon-editar {
+    -fx-shape: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z";
+}
+
+.icon-excluir {
+    -fx-shape: "M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z";
+}
+
+.icon-duplicar {
+    -fx-shape: "M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z";
+}
+
+.icon-pessoa-mais {
+    -fx-shape: "M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z";
+}
