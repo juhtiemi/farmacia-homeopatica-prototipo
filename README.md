@@ -33,7 +33,7 @@ Não é preciso instalar o Maven nem o JavaFX separadamente.
 No macOS ou no Linux, na pasta do projeto:
 
 ```bash
-./mvnw javafx:run
+sh mvnw javafx:run
 ```
 
 No Windows (Prompt de Comando ou PowerShell):
