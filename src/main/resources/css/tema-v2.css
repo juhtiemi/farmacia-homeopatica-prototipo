@@ -513,6 +513,8 @@
 .v2-tabela .table-column .table-cell:selected,
 .v2-tabela .table-row-cell:filled:selected .table-cell {
     -fx-text-fill: #1C2B27;
+    -fx-background: #E9F3EF;
+    -fx-text-background-color: #1C2B27;
 }
 
 .v2-tabela .scroll-bar:horizontal {
